@@ -79,16 +79,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Row(
         children: [
-          // Flexible(
-          //     child: Container(
-          //   color: Colors.red,
-          // )),
-          // Flexible(
-          //     flex: 5,
-          //     child: Container(
-          //       color: Colors.green,
-          //     ))
-
           Flexible(
             child: MainLeftWidget(
               onTap: (index) => setState(() {
@@ -96,20 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
               }),
             ),
           ),
-          // Center(
-          //   child: ColoredBox(
-          //     color: Colors.red,
-          //     child: SizedBox.square(
-          //       dimension: 50,
-          //     ),
-          //   ),
-          // ),
-          // ColoredBox(
-          //   color: Colors.orange,
-          //   child: SizedBox.square(
-          //     dimension: 50,
-          //   ),
-          // )
           Flexible(
               flex: 7,
               child: AnimatedSwitcher(

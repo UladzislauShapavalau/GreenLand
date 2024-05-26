@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:greenland/src/data/plant.dart';
+import 'package:greenland/src/ui/my_plants/my_plant_widget.dart';
 
 class MyPlantsPage extends StatefulWidget {
   const MyPlantsPage({super.key});
@@ -11,14 +13,27 @@ class _MyPlantsPageState extends State<MyPlantsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('MyPlantsPage'),
-      ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Add widgets for displaying today's tasks, reminders, plant care, etc.
-          // Use Text, Image, ListView, Card, etc. as needed
-          // Implement interactive elements using GestureDetector, ElevatedButton, etc.
+          Row(
+            children: [
+              Text('Bedroom'),
+              const SizedBox(
+                width: 8,
+              ),
+              Expanded(
+                child: Divider(
+                  thickness: 1,
+                  endIndent: 50,
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+          MyPlantWidget(
+            plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+          ),
         ],
       ),
     );
