@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # greenland
 
 A new Flutter project.
@@ -14,3 +15,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# GreenLand
+Aplikacja przypominająca dla roślin domowych 
+>>>>>>> b604d9092a72ec95740b4234c80c4f783561fe88
