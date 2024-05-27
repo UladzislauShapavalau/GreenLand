@@ -9,8 +9,10 @@ class MyPlantsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
+      hoverColor: Colors.green,
       onTap: onTap,
+      onHover: (value) {},
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(

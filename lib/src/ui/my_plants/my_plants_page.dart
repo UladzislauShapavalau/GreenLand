@@ -31,8 +31,21 @@ class _MyPlantsPageState extends State<MyPlantsPage> {
               ),
             ],
           ),
-          MyPlantWidget(
-            plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+          Row(
+            children: [
+              MyPlantWidget(
+                plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+              ),
+              MyPlantWidget(
+                plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+              ),
+              MyPlantWidget(
+                plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+              ),
+              MyPlantWidget(
+                plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+              ),
+            ],
           ),
         ],
       ),

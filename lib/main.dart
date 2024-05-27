@@ -40,7 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        surfaceTintColor: Palette.backgroundCardColor,
+        //surfaceTintColor: Palette.backgroundColor,
+        backgroundColor: Palette.backgroundColor,
         toolbarHeight: 80,
         title: Row(
           mainAxisSize: MainAxisSize.min,
@@ -89,11 +90,11 @@ class _MyHomePageState extends State<MyHomePage> {
           Flexible(
               flex: 7,
               child: AnimatedSwitcher(
-                duration: Duration(milliseconds: 300),
+                duration: Duration(milliseconds: 100),
                 child: switch (pageIndex) {
                   0 => TodayPage(),
                   1 => MyPlantsPage(),
-                  2 => AddPlantsPage(),
+                  2 => AddPlantPage(),
                   _ => ErrorPage()
                 },
               )),

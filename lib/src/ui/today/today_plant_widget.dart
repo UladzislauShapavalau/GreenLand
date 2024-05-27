@@ -14,14 +14,14 @@ class TodayPlantWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 3),
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.grey.withOpacity(0.1),
+          //     spreadRadius: 5,
+          //     blurRadius: 7,
+          //     offset: Offset(0, 3),
+          //   ),
+          // ],
         ),
         child: Padding(
           padding: EdgeInsets.all(16.0),

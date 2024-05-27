@@ -10,11 +10,11 @@ class TodayButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      hoverColor: Colors.red,
+      hoverColor: Colors.green,
       onTap: onTap,
       onHover: (value) {},
       child: Container(
-        padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: Palette.backgroundColor,
           borderRadius: BorderRadius.circular(12),

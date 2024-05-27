@@ -1,24 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:greenland/src/data/plant.dart';
+import 'package:greenland/src/ui/my_plants/my_plant_widget.dart';
 
-class AddPlantsPage extends StatefulWidget {
-  const AddPlantsPage({super.key});
+import 'add_plant_widget.dart';
+
+class AddPlantPage extends StatefulWidget {
+  const AddPlantPage({super.key});
 
   @override
-  State<AddPlantsPage> createState() => _AddPlantsPageState();
+  State<AddPlantPage> createState() => _AddPlantPageState();
 }
 
-class _AddPlantsPageState extends State<AddPlantsPage> {
+class _AddPlantPageState extends State<AddPlantPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('AddPlantsPage'),
-      ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Add widgets for displaying today's tasks, reminders, plant care, etc.
-          // Use Text, Image, ListView, Card, etc. as needed
-          // Implement interactive elements using GestureDetector, ElevatedButton, etc.
+          Row(
+            children: [
+              Text('New plant'),
+              const SizedBox(
+                width: 8,
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              AddPlantWidget(
+                plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+              ),
+            ],
+          ),
         ],
       ),
     );

@@ -10,75 +10,88 @@ class MyPlantWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 220,
-      height: 230,
+      height: 260,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: Colors.white,
+          //color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 3),
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.grey.withOpacity(0.1),
+          //     spreadRadius: 5,
+          //     blurRadius: 7,
+          //     offset: Offset(0, 3),
+          //   ),
+          // ],
         ),
-        child: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Row(
-            children: [
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
-                      borderRadius: BorderRadius.circular(35.0),
-                    ),
-                    child: SizedBox(
-                      width: 160,
-                      height: 160,
-                    ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(35.0),
                   ),
-                  Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
-                          'assets/icons/plant_sweat.png',
-                          width: 130,
-                          height: 130,
-                          fit: BoxFit.cover,
-                        ),
+                  child: SizedBox(
+                    width: 180,
+                    height: 220,
+                  ),
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  //crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    //SizedBox(height: 16.0),
+
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.asset(
+                        'assets/icons/plant_sweat.png',
+                        width: 140,
+                        height: 140,
+                        fit: BoxFit.cover,
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                    ),
+                    SizedBox(height: 6.0),
+                    SizedBox(
+                      width: 140,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            plant.nickname,
-                            style: TextStyle(
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.bold,
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                plant.nickname,
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(
+                                plant.name,
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            plant.name,
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              color: Colors.grey,
-                            ),
+                          Icon(
+                            Icons.info,
+                            color: Colors.grey,
                           ),
-                          SizedBox(height: 8.0),
                         ],
                       ),
-                    ],
-                  ),
-                ],
-              ),
-              SizedBox(width: 20),
-            ],
-          ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
