@@ -1,10 +1,12 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:greenland/src/data/plant.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:greenland/src/config/styles/palette.dart';
-import 'dart:io';
 import 'dart:typed_data';
-import 'package:file_picker/file_picker.dart';
 
 class AddPlantWidget extends StatefulWidget {
   const AddPlantWidget({required this.plant, super.key});
@@ -17,7 +19,8 @@ class AddPlantWidget extends StatefulWidget {
 
 class _AddPlantWidgetState extends State<AddPlantWidget> {
   TextEditingController _dateController = TextEditingController();
-  Uint8List? _selectedImageBytes;
+  Uint8List? webImage;
+  File? _pickedImage;
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -34,15 +37,33 @@ class _AddPlantWidgetState extends State<AddPlantWidget> {
   }
 
   Future<void> _pickImage() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.image,
-      allowMultiple: false,
-    );
-
-    if (result != null) {
-      setState(() {
-        _selectedImageBytes = result.files.single.bytes;
-      });
+    final ImagePicker _picker = ImagePicker();
+    try {
+      if (kIsWeb) {
+        // Handle web image picking
+        XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+        if (image != null) {
+          var f = await image.readAsBytes();
+          setState(() {
+            webImage = f;
+            _pickedImage = File('a'); // Dummy file as placeholder
+          });
+        } else {
+          print('No image has been picked');
+        }
+      } else {
+        // Handle mobile image picking
+        XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+        if (image != null) {
+          setState(() {
+            _pickedImage = File(image.path);
+          });
+        } else {
+          print('No image has been picked');
+        }
+      }
+    } catch (e) {
+      print('Error picking image: $e');
     }
   }
 
@@ -64,9 +85,9 @@ class _AddPlantWidgetState extends State<AddPlantWidget> {
                   decoration: BoxDecoration(
                     border: Border.all(
                         color: Colors.grey, style: BorderStyle.solid),
-                    borderRadius: BorderRadius.circular(26.0),
+                    borderRadius: BorderRadius.circular(35.0),
                   ),
-                  child: _selectedImageBytes == null
+                  child: _pickedImage == null
                       ? Center(
                           child: Text(
                             'Drop your file here, or browse\nJPG, PNG (Max 250x250px - 2Mb)',
@@ -74,13 +95,16 @@ class _AddPlantWidgetState extends State<AddPlantWidget> {
                             style: TextStyle(color: Colors.grey),
                           ),
                         )
-                      : ClipRRect(
-                          borderRadius: BorderRadius.circular(26.0),
-                          child: Image.memory(
-                            _selectedImageBytes!,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                      : kIsWeb
+                          ? ClipRRect(
+                              borderRadius: BorderRadius.circular(35.0),
+                              child: Image.memory(webImage!, fit: BoxFit.cover),
+                            )
+                          : ClipRRect(
+                              borderRadius: BorderRadius.circular(35.0),
+                              child:
+                                  Image.file(_pickedImage!, fit: BoxFit.cover),
+                            ),
                 ),
               ),
             ),
@@ -186,9 +210,9 @@ class _AddPlantWidgetState extends State<AddPlantWidget> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor:
-                            WidgetStateProperty.all(Palette.doneColor),
+                            MaterialStateProperty.all(Palette.doneColor),
                         foregroundColor:
-                            WidgetStateProperty.all(Palette.complete),
+                            MaterialStateProperty.all(Palette.complete),
                       ),
                       onPressed: () {
                         // Handle save

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:greenland/src/config/styles/palette.dart';
-import 'package:greenland/src/data/plant.dart';
 import 'package:greenland/src/ui/main_left_widget.dart';
 
 import 'package:greenland/src/ui/add_plant/add_plant_page.dart';
