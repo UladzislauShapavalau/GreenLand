@@ -71,14 +71,21 @@ class TodayPlantWidget extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 8.0),
-                    Row(
-                      children: List.generate(5, (index) {
-                        return Icon(
-                          Icons.water_drop,
-                          color: index < 3 ? Colors.blue : Colors.grey,
-                        );
-                      }),
+                    Text(
+                      'Water',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        color: Colors.black87,
+                      ),
                     ),
+                    // Row(
+                    //   children: List.generate(5, (index) {
+                    //     return Icon(
+                    //       Icons.water_drop,
+                    //       color: index < 3 ? Colors.blue : Colors.grey,
+                    //     );
+                    //   }),
+                    // ),
                     SizedBox(height: 16.0),
                     Align(
                       alignment: Alignment.center,

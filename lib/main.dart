@@ -7,6 +7,8 @@ import 'package:greenland/src/ui/my_plants/my_plants_page.dart';
 import 'package:greenland/src/ui/today/today_page.dart';
 import 'package:greenland/src/ui/error_page.dart';
 
+import 'src/ui/auth/registration_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: const MyHomePage(),
+      home: AuthPage(),
     );
   }
 }
@@ -45,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset('assets/icons/icon_logo.svg'),
+            Image.asset('icons/icon_logo.png'),
             const SizedBox(width: 8),
             const Text('Greenland'),
             const Spacer(
@@ -53,23 +55,23 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const Icon(
               Icons.mail_outline,
-              color: Colors.black,
+              color: Colors.black87,
             ),
             const SizedBox(width: 8),
             const Icon(
               Icons.notifications_none_outlined,
-              color: Colors.black,
+              color: Colors.black87,
             ),
             const SizedBox(width: 8),
             Container(
               width: 1,
               height: 24,
-              color: Colors.black,
+              color: Colors.black87,
             ),
             const SizedBox(width: 8),
             const Icon(
               Icons.person_outline,
-              color: Colors.black,
+              color: Colors.black87,
             ),
             const SizedBox(width: 8),
             const Text('Username'),

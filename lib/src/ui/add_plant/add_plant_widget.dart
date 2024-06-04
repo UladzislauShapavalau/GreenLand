@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:greenland/src/data/plant.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:greenland/src/config/styles/palette.dart';
 import 'dart:typed_data';
 
@@ -71,6 +70,7 @@ class _AddPlantWidgetState extends State<AddPlantWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 1000.0,
+      height: 530,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(30.0, 16.0, 16.0, 16.0),
         child: Row(
@@ -90,7 +90,7 @@ class _AddPlantWidgetState extends State<AddPlantWidget> {
                   child: _pickedImage == null
                       ? Center(
                           child: Text(
-                            'Drop your file here, or browse\nJPG, PNG (Max 250x250px - 2Mb)',
+                            'Browse your file\nJPG, PNG (Max 250x250px - 2Mb)',
                             textAlign: TextAlign.center,
                             style: TextStyle(color: Colors.grey),
                           ),
@@ -127,7 +127,7 @@ class _AddPlantWidgetState extends State<AddPlantWidget> {
                     ),
                   ),
                   SizedBox(height: 16.0),
-                  Row(
+                  /*Row(
                     children: [
                       Container(
                         width: 100,
@@ -149,7 +149,7 @@ class _AddPlantWidgetState extends State<AddPlantWidget> {
                         }),
                       ),
                     ],
-                  ),
+                  ),*/
                   SizedBox(height: 16.0),
                   TextFormField(
                     controller: _dateController,
