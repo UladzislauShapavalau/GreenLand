@@ -1,33 +1,101 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:greenland/main.dart';
+import 'package:greenland/src/ui/add_plant/add_reminder_widget.dart';
 
 import '../../config/styles/palette.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthPage extends StatefulWidget {
   @override
-  _AuthPageState createState() => _AuthPageState();
+  AuthPageState createState() => AuthPageState();
 }
 
-class _AuthPageState extends State<AuthPage> {
+class AuthPageState extends State<AuthPage> {
+  static late String username;
+
   final _registerFormKey = GlobalKey<FormState>();
   final _loginFormKey = GlobalKey<FormState>();
   String? _name, _registerEmail, _registerPassword;
   String? _loginEmail, _loginPassword;
   bool _isLogin = false;
 
-  void _tryRegister() {
+  void _tryRegister() async {
     if (_registerFormKey.currentState!.validate()) {
       _registerFormKey.currentState!.save();
-      // Handle registration logic here
-      print(
-          'Register with name: $_name, email: $_registerEmail, password: $_registerPassword');
+
+      final url = 'http://localhost:8000/api/register';
+      final headers = {
+        HttpHeaders.contentTypeHeader: ContentType.json.toString(),
+        HttpHeaders.accessControlAllowOriginHeader: '*'
+      };
+      final body = json.encode({
+        'name': _name,
+        'email': _registerEmail,
+        'password': _registerPassword,
+      });
+
+      try {
+        final response =
+            await http.post(Uri.parse(url), headers: headers, body: body);
+
+        if (response.statusCode == 200) {
+          // Handle successful registration
+          print('Registration successful');
+        } else {
+          // Handle registration error
+          print('Registration failed: ${response.body}');
+        }
+      } catch (error) {
+        // Handle any errors
+        print('Error: $error');
+      }
     }
   }
 
-  void _tryLogin() {
+  void _tryLogin() async {
     if (_loginFormKey.currentState!.validate()) {
       _loginFormKey.currentState!.save();
-      // Handle login logic here
-      print('Login with email: $_loginEmail, password: $_loginPassword');
+
+      final url = 'http://localhost:8000/api/login';
+      final headers = {'Content-Type': 'application/json'};
+      final body = json.encode({
+        'email': _loginEmail,
+        'password': _loginPassword,
+      });
+
+      try {
+        final response =
+            await http.post(Uri.parse(url), headers: headers, body: body);
+
+        if (response.statusCode == 200) {
+          // Parse the JSON response to get the token
+          final responseData = json.decode(response.body);
+          final token = responseData['token'];
+          username = _loginEmail!;
+
+          // Save the token using shared_preferences
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString('auth_token', token);
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const MyHomePage()),
+          );
+
+          print('Login successful, token saved: $token');
+          // You can now use the token for future API calls
+        } else {
+          // Handle login error
+          print('Login failed: ${response.body}');
+        }
+      } catch (error) {
+        // Handle any errors
+        print('Error: $error');
+      }
     }
   }
 
@@ -97,6 +165,7 @@ class _AuthPageState extends State<AuthPage> {
                             child: Column(
                               children: [
                                 TextFormField(
+                                  initialValue: 'admin',
                                   decoration: InputDecoration(
                                     labelText: 'Name',
                                     border: OutlineInputBorder(),
@@ -113,6 +182,7 @@ class _AuthPageState extends State<AuthPage> {
                                 ),
                                 SizedBox(height: 16.0),
                                 TextFormField(
+                                  initialValue: 'admin@admin.com',
                                   decoration: InputDecoration(
                                     labelText: 'Email address',
                                     border: OutlineInputBorder(),
@@ -124,6 +194,7 @@ class _AuthPageState extends State<AuthPage> {
                                 ),
                                 SizedBox(height: 16.0),
                                 TextFormField(
+                                  initialValue: 'admin',
                                   decoration: InputDecoration(
                                     labelText: 'Password',
                                     border: OutlineInputBorder(),
@@ -168,7 +239,7 @@ class _AuthPageState extends State<AuthPage> {
                                       textStyle: TextStyle(fontSize: 18),
                                       foregroundColor: Colors.white,
                                     ),
-                                    child: Center(child: Text('Signup')),
+                                    child: Center(child: Text('Sign up')),
                                   ),
                                 ),
                               ],
@@ -180,6 +251,7 @@ class _AuthPageState extends State<AuthPage> {
                             child: Column(
                               children: [
                                 TextFormField(
+                                  initialValue: 'admin@admin.com',
                                   decoration: InputDecoration(
                                     labelText: 'Email address',
                                     border: OutlineInputBorder(),
@@ -196,6 +268,7 @@ class _AuthPageState extends State<AuthPage> {
                                 ),
                                 SizedBox(height: 16.0),
                                 TextFormField(
+                                  initialValue: 'admin',
                                   decoration: InputDecoration(
                                     labelText: 'Password',
                                     border: OutlineInputBorder(),

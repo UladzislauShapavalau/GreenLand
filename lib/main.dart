@@ -6,6 +6,7 @@ import 'package:greenland/src/ui/add_plant/add_plant_page.dart';
 import 'package:greenland/src/ui/my_plants/my_plants_page.dart';
 import 'package:greenland/src/ui/today/today_page.dart';
 import 'package:greenland/src/ui/error_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/ui/auth/registration_page.dart';
 
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
@@ -40,6 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         //surfaceTintColor: Palette.backgroundColor,
         backgroundColor: Palette.backgroundColor,
@@ -74,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.black87,
             ),
             const SizedBox(width: 8),
-            const Text('Username'),
+            Text(AuthPageState.username.split('@').first),
             Spacer(),
           ],
         ),

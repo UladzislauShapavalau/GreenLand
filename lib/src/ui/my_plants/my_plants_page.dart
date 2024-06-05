@@ -12,43 +12,41 @@ class MyPlantsPage extends StatefulWidget {
 class _MyPlantsPageState extends State<MyPlantsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Text('Bedroom'),
-              const SizedBox(
-                width: 8,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text('Bedroom'),
+            const SizedBox(
+              width: 8,
+            ),
+            Expanded(
+              child: Divider(
+                thickness: 1,
+                endIndent: 50,
+                color: Colors.black,
               ),
-              Expanded(
-                child: Divider(
-                  thickness: 1,
-                  endIndent: 50,
-                  color: Colors.black,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              MyPlantWidget(
-                plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
-              ),
-              MyPlantWidget(
-                plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
-              ),
-              MyPlantWidget(
-                plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
-              ),
-              MyPlantWidget(
-                plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
-              ),
-            ],
-          ),
-        ],
-      ),
+            ),
+          ],
+        ),
+        Row(
+          children: [
+            MyPlantWidget(
+              plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+            ),
+            MyPlantWidget(
+              plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+            ),
+            MyPlantWidget(
+              plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+            ),
+            MyPlantWidget(
+              plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
