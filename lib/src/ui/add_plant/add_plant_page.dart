@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greenland/src/data/plant.dart';
 import 'package:greenland/src/ui/add_plant/add_reminder_widget.dart';
-import 'package:greenland/src/ui/my_plants/my_plant_widget.dart';
 
 import 'add_plant_widget.dart';
 
@@ -13,6 +12,14 @@ class AddPlantPage extends StatefulWidget {
 }
 
 class _AddPlantPageState extends State<AddPlantPage> {
+  void _onPlantAdded() {
+    // Handle the logic after a plant is added successfully
+    // For example, you can navigate to another page or show a success message
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Plant added successfully')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,9 +27,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
       children: [
         Row(
           children: [
-            SizedBox(
-              width: 30,
-            ),
+            SizedBox(width: 30),
             Text(
               'New plant',
               style: TextStyle(
@@ -30,26 +35,18 @@ class _AddPlantPageState extends State<AddPlantPage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(
-              width: 8,
-            ),
+            const SizedBox(width: 8),
           ],
         ),
         Row(
           children: [
-            AddPlantWidget(
-              plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
-            ),
+            AddPlantWidget(onPlantAdded: _onPlantAdded),
           ],
         ),
-        SizedBox(
-          height: 20,
-        ),
+        SizedBox(height: 20),
         Row(
           children: [
-            SizedBox(
-              width: 30,
-            ),
+            SizedBox(width: 30),
             Text(
               'Reminders',
               style: TextStyle(

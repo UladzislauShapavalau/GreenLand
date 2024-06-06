@@ -132,8 +132,8 @@ class AuthPageState extends State<AuthPage> {
                     borderRadius: BorderRadius.circular(16.0),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: 130.0, horizontal: 160.0),
+                    padding:
+                        EdgeInsets.symmetric(vertical: 80.0, horizontal: 160.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -151,7 +151,7 @@ class AuthPageState extends State<AuthPage> {
                           ],
                         ),
                         SizedBox(
-                          height: 100,
+                          height: 10,
                         ),
                         Text(
                           'Get Started Now',

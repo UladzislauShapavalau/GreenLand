@@ -13,16 +13,7 @@ class MyPlantWidget extends StatelessWidget {
       height: 260,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          //color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: Colors.grey.withOpacity(0.1),
-          //     spreadRadius: 5,
-          //     blurRadius: 7,
-          //     offset: Offset(0, 3),
-          //   ),
-          // ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -42,18 +33,22 @@ class MyPlantWidget extends StatelessWidget {
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  //crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    //SizedBox(height: 16.0),
-
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        'assets/icons/plant_sweat.png',
-                        width: 140,
-                        height: 140,
-                        fit: BoxFit.cover,
-                      ),
+                      child: plant.image.isNotEmpty
+                          ? Image.network(
+                              plant.image,
+                              width: 140,
+                              height: 140,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.asset(
+                              'assets/icons/plant_sweat.png',
+                              width: 140,
+                              height: 140,
+                              fit: BoxFit.cover,
+                            ),
                     ),
                     SizedBox(height: 6.0),
                     SizedBox(
