@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:greenland/src/data/plant.dart';
 
@@ -8,6 +11,17 @@ class MyPlantWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ImageProvider<Object> imageProvider;
+
+    try {
+      // Декодирование Base64-строки в байты
+      Uint8List imageBytes = base64Decode(plant.image);
+      imageProvider = MemoryImage(imageBytes);
+    } catch (e) {
+      print('Error decoding Base64 image: $e');
+      imageProvider =
+          AssetImage('assets/icons/plant_sweat.png'); // Placeholder image
+    }
     return SizedBox(
       width: 220,
       height: 260,
@@ -36,19 +50,12 @@ class MyPlantWidget extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
-                      child: plant.image.isNotEmpty
-                          ? Image.network(
-                              plant.image,
-                              width: 140,
-                              height: 140,
-                              fit: BoxFit.cover,
-                            )
-                          : Image.asset(
-                              'assets/icons/plant_sweat.png',
-                              width: 140,
-                              height: 140,
-                              fit: BoxFit.cover,
-                            ),
+                      child: Image(
+                        image: imageProvider,
+                        width: 140,
+                        height: 140,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     SizedBox(height: 6.0),
                     SizedBox(

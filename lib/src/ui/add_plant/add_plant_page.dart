@@ -22,52 +22,54 @@ class _AddPlantPageState extends State<AddPlantPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            SizedBox(width: 30),
-            Text(
-              'New plant',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              SizedBox(width: 30),
+              Text(
+                'New plant',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(width: 8),
-          ],
-        ),
-        Row(
-          children: [
-            AddPlantWidget(onPlantAdded: _onPlantAdded),
-          ],
-        ),
-        SizedBox(height: 20),
-        Row(
-          children: [
-            SizedBox(width: 30),
-            Text(
-              'Reminders',
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
+              const SizedBox(width: 8),
+            ],
+          ),
+          Row(
+            children: [
+              AddPlantWidget(onPlantAdded: _onPlantAdded),
+            ],
+          ),
+          SizedBox(height: 20),
+          Row(
+            children: [
+              SizedBox(width: 30),
+              Text(
+                'Reminders',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            Expanded(
-              child: Divider(
-                thickness: 1,
-                indent: 10,
-                endIndent: 50,
-                color: Colors.black,
+              Expanded(
+                child: Divider(
+                  thickness: 1,
+                  indent: 10,
+                  endIndent: 50,
+                  color: Colors.black,
+                ),
               ),
-            ),
-          ],
-        ),
-        AddReminderWidget(
-          plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
-        ),
-      ],
+            ],
+          ),
+          AddReminderWidget(
+            plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+          ),
+        ],
+      ),
     );
   }
 }

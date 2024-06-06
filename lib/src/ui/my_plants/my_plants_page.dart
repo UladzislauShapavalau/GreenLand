@@ -33,11 +33,11 @@ class _MyPlantsPageState extends State<MyPlantsPage> {
         } else {
           final plants = snapshot.data!;
           return GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 8.0,
-              mainAxisSpacing: 8.0,
-              childAspectRatio: 3 / 4,
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              //crossAxisCount: 6,
+              maxCrossAxisExtent: 260,
+              //crossAxisSpacing: ,
+              mainAxisSpacing: 50.0,
             ),
             itemCount: plants.length,
             itemBuilder: (context, index) {

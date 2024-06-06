@@ -85,7 +85,7 @@ class _AddPlantWidgetState extends State<AddPlantWidget> {
 
       if (response.statusCode == 200) {
         final responseData = json.decode(response.body);
-        return responseData['id']; // Assuming the response contains the ID
+        return responseData['id'];
       } else {
         print('Failed to fetch UUID from $endpoint: ${response.body}');
       }
