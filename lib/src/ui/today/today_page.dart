@@ -32,9 +32,10 @@ class _TodayPageState extends State<TodayPage> {
             ),
           ],
         ),
-        // TodayPlantWidget(
-        //   plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
-        // ),
+        TodayPlantWidget(
+          plant:
+              Plant(id: '', image: '', nickname: 'Gordon', name: 'Sweatheart'),
+        ),
       ],
     );
   }
