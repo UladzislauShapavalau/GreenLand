@@ -10,7 +10,7 @@ class MyPlantsButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      hoverColor: Colors.green,
+      //hoverColor: Colors.green,
       onTap: onTap,
       onHover: (value) {},
       child: Container(

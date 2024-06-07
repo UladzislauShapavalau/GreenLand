@@ -11,9 +11,8 @@ class MainLeftWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      color: Palette.backgroundColor,
+    return SizedBox(
+      width: 500,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

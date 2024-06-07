@@ -83,7 +83,7 @@ class MyPlantWidget extends StatelessWidget {
                             ],
                           ),
                           Icon(
-                            Icons.info,
+                            Icons.delete,
                             color: Colors.grey,
                           ),
                         ],

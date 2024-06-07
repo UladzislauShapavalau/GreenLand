@@ -9,7 +9,7 @@ class AddPlantsButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -31,5 +31,3 @@ class AddPlantsButton extends StatelessWidget {
     );
   }
 }
-
-//Image.asset('assets/icons/icon_logo.svg')
