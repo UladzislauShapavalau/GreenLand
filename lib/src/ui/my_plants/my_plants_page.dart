@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greenland/src/data/plant.dart';
 import 'package:greenland/src/ui/my_plants/my_plant_widget.dart';
-import 'package:greenland/api_service.dart'; // Импортируйте созданный api_service
+import 'package:greenland/api_service.dart';
 
 class MyPlantsPage extends StatefulWidget {
   const MyPlantsPage({super.key});
@@ -19,6 +19,26 @@ class _MyPlantsPageState extends State<MyPlantsPage> {
     _plantsFuture = fetchPlants();
   }
 
+  Future<void> _refreshPlants() async {
+    setState(() {
+      _plantsFuture = fetchPlants();
+    });
+  }
+
+  void _deletePlant(String id) async {
+    try {
+      await deletePlant(id);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Plant deleted successfully')),
+      );
+      _refreshPlants();
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error deleting plant: $e')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Plant>>(
@@ -34,14 +54,15 @@ class _MyPlantsPageState extends State<MyPlantsPage> {
           final plants = snapshot.data!;
           return GridView.builder(
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              //crossAxisCount: 6,
               maxCrossAxisExtent: 260,
-              //crossAxisSpacing: ,
               mainAxisSpacing: 50.0,
             ),
             itemCount: plants.length,
             itemBuilder: (context, index) {
-              return MyPlantWidget(plant: plants[index]);
+              return MyPlantWidget(
+                plant: plants[index],
+                onDelete: () => _deletePlant(plants[index].id),
+              );
             },
           );
         }

@@ -30,3 +30,28 @@ Future<List<Plant>> fetchPlants() async {
     return [];
   }
 }
+
+Future<void> deletePlant(String id) async {
+  final prefs = await SharedPreferences.getInstance();
+  final token = prefs.getString('auth_token');
+
+  final url = 'http://localhost:8000/api/plants/$id';
+  final headers = {
+    HttpHeaders.contentTypeHeader: ContentType.json.toString(),
+    HttpHeaders.authorizationHeader: 'Bearer $token',
+  };
+
+  try {
+    final response = await http.delete(Uri.parse(url), headers: headers);
+
+    if (response.statusCode == 204) {
+      print('Plant deleted successfully');
+    } else {
+      print('Failed to delete plant: ${response.body}');
+      throw Exception('Failed to delete plant');
+    }
+  } catch (error) {
+    print('Error deleting plant: $error');
+    throw error;
+  }
+}

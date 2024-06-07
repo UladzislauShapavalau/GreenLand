@@ -1,15 +1,22 @@
 class Plant {
-  final String image;
-  final String nickname;
+  final String id;
   final String name;
+  final String nickname;
+  final String image;
 
-  Plant({required this.image, required this.nickname, required this.name});
+  Plant({
+    required this.id,
+    required this.name,
+    required this.nickname,
+    required this.image,
+  });
 
   factory Plant.fromJson(Map<String, dynamic> json) {
     return Plant(
-      image: json['image'] as String,
-      nickname: json['nickname'] as String,
-      name: json['name'] as String,
+      id: json['id'],
+      name: json['name'],
+      nickname: json['nickname'],
+      image: json['image'],
     );
   }
 }

@@ -5,23 +5,23 @@ import 'package:flutter/material.dart';
 import 'package:greenland/src/data/plant.dart';
 
 class MyPlantWidget extends StatelessWidget {
-  const MyPlantWidget({required this.plant, super.key});
+  const MyPlantWidget({required this.plant, required this.onDelete, super.key});
 
   final Plant plant;
+  final VoidCallback onDelete;
 
   @override
   Widget build(BuildContext context) {
     ImageProvider<Object> imageProvider;
 
     try {
-      // Декодирование Base64-строки в байты
       Uint8List imageBytes = base64Decode(plant.image);
       imageProvider = MemoryImage(imageBytes);
     } catch (e) {
       print('Error decoding Base64 image: $e');
-      imageProvider =
-          AssetImage('assets/icons/plant_sweat.png'); // Placeholder image
+      imageProvider = AssetImage('assets/icons/plant_sweat.png');
     }
+
     return SizedBox(
       width: 220,
       height: 260,
@@ -82,9 +82,12 @@ class MyPlantWidget extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Icon(
-                            Icons.delete,
-                            color: Colors.grey,
+                          GestureDetector(
+                            onTap: onDelete,
+                            child: Icon(
+                              Icons.delete_outline,
+                              color: Colors.grey,
+                            ),
                           ),
                         ],
                       ),

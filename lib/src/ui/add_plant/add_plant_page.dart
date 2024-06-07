@@ -65,9 +65,9 @@ class _AddPlantPageState extends State<AddPlantPage> {
               ),
             ],
           ),
-          AddReminderWidget(
-            plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
-          ),
+          // AddReminderWidget(
+          //   plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
+          // ),
         ],
       ),
     );
