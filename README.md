@@ -10,8 +10,8 @@ Wpisz podstawowe informacje o roślinach, aby nie zapomnieć o różnych czynno�
 ![image](https://github.com/UladzislauShapavalau/GreenLand/blob/b3625bfadf81d0f2d296b48525cb0a6dc2708069/screenshots/4myPlants.jpg)
 ![image](https://github.com/UladzislauShapavalau/GreenLand/blob/b3625bfadf81d0f2d296b48525cb0a6dc2708069/screenshots/5addPlats.jpg)
 ![image](https://github.com/UladzislauShapavalau/GreenLand/blob/b3625bfadf81d0f2d296b48525cb0a6dc2708069/ERD4.png)
-
-
+![image](https://github.com/UladzislauShapavalau/GreenLand/blob/3c0476078f8caa44b3664215e014ccee16749f74/screenshots/swagger1.jpg)
+![image](https://github.com/UladzislauShapavalau/GreenLand/blob/3c0476078f8caa44b3664215e014ccee16749f74/screenshots/swagger2.jpg)
 
 ![image](https://github.com/UladzislauShapavalau/GreenLand/assets/80047837/b58d8754-c46f-4436-a311-412a92fe7c19)
 
