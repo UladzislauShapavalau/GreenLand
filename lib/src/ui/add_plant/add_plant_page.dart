@@ -16,7 +16,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
     // Handle the logic after a plant is added successfully
     // For example, you can navigate to another page or show a success message
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Plant added successfully')),
+      const SnackBar(content: Text('Plant added successfully')),
     );
   }
 
@@ -26,7 +26,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             children: [
               SizedBox(width: 30),
               Text(
@@ -36,7 +36,7 @@ class _AddPlantPageState extends State<AddPlantPage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(width: 8),
+              SizedBox(width: 8),
             ],
           ),
           Row(
@@ -44,8 +44,8 @@ class _AddPlantPageState extends State<AddPlantPage> {
               AddPlantWidget(onPlantAdded: _onPlantAdded),
             ],
           ),
-          SizedBox(height: 20),
-          Row(
+          const SizedBox(height: 20),
+          const Row(
             children: [
               SizedBox(width: 30),
               Text(
@@ -65,9 +65,10 @@ class _AddPlantPageState extends State<AddPlantPage> {
               ),
             ],
           ),
-          // AddReminderWidget(
-          //   plant: Plant(image: '', nickname: 'Gordon', name: 'Sweatheart'),
-          // ),
+          AddReminderWidget(
+            plant: Plant(
+                id: '', image: '', nickname: 'Gordon', name: 'Sweatheart'),
+          ),
         ],
       ),
     );
